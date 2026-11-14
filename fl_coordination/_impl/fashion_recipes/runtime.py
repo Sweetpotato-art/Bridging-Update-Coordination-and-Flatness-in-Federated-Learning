@@ -1,4 +1,5 @@
 """Reuse exact historical training code, with one experiment identity per job."""
+from functools import partial
 from pathlib import Path
 from types import FunctionType
 from fl_coordination._impl.fedseries import runtime as frozen
@@ -10,7 +11,10 @@ from .protocol import label, display
 
 
 def engine_factory(config, coordinator, variant, device, network=None):
-    if variant in ('fedgf', 'fedgloss'):
+    if variant == 'fedgloss':
+        from .local_gloss import LocalizedGloSSEngine
+        return LocalizedGloSSEngine(config, coordinator, variant, device, network=network)
+    if variant == 'fedgf':
         from fl_coordination._impl.fedglobalflat.engine import Engine
         return Engine(config, coordinator, variant, device, network=network)
     if coordinator == 'fedavg':
@@ -22,7 +26,7 @@ def engine_factory(config, coordinator, variant, device, network=None):
     return engine(config, coordinator, variant, device, network=network)
 
 
-def write_metadata(path, value):
+def write_metadata(path, value, *, local_probe=None):
     if path.name in ('metadata.json', 'final.json'):
         identity = value.get('identity', value)
         c, v = identity['coordinator'], identity['variant']
@@ -31,6 +35,13 @@ def write_metadata(path, value):
                           'fedgf':'FedGF', 'fedgloss':'FedGloSS'}[v],
             branch_policy='ordinary' if v=='baseline' else 'coordinate(g+h)' if v=='sam' else 'coordinate(g)+coordinate(h)',
             perturbation_scope='none' if v=='baseline' else 'shared_encoder_only' if v in ('fedgf','fedgloss') else 'shared_encoder_and_private_head')
+        if local_probe is not None:
+            value.update(
+                perturbation='FedGloSS+LocalSAM',
+                rho_global=local_probe['rho'],
+                rho_local=local_probe['local_sam_rho'],
+                probe_policy=local_probe['probe_policy'],
+            )
     write(path, value)
 
 
@@ -44,8 +55,12 @@ def run_method(config, data, coordinator, variant, device, result_root, weight_r
     # exact method directory, avoiding a conflict in its coordinator parent.
     def bind(cfg, dataset, manifest, root):
         return frozen.bind_experiment(cfg, dataset, manifest, Path(root)/name)
-    runner = FunctionType(source.__code__, dict(source.__globals__, method_label=label,
-                json_write=write_metadata, bind_experiment=bind),
-                name='run_method', argdefs=source.__defaults__)
+    bindings = dict(source.__globals__, method_label=label, json_write=write_metadata,
+                    bind_experiment=bind)
+    if variant == 'fedgloss':
+        from .local_gloss import epoch_summary
+        bindings.update(epoch_summary=epoch_summary,
+                        json_write=partial(write_metadata, local_probe=config))
+    runner = FunctionType(source.__code__, bindings, name='run_method', argdefs=source.__defaults__)
     runner.__kwdefaults__ = dict(source.__kwdefaults__, engine_factory=engine_factory)
     return runner(config, data, coordinator, variant, device, result_root, weight_root, source_manifest, **kwargs)

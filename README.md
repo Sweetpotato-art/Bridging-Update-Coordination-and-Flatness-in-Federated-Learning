@@ -57,8 +57,10 @@ and `fedawa`. Mechanism identifiers are `baseline` (the default), `sam`, `asam`,
 `gf`, and `gloss`. On Fashion-MNIST the historical `sam` table row uses ASAM
 with separate coordination and `asam` uses the same perturbation with direct
 coordination. On the other datasets `sam` uses standard SAM with separate
-coordination. FedGloSS uses an additional local SAM probe on CIFAR-100,
-Office-Home, and Retina.
+coordination. FedGloSS adds a fresh local SAM probe after the historical global shift.
+On Fashion-MNIST, the global and local radii are 0.02 and 0.01 for every
+coordinator. On CIFAR-100, FedMGDA+ with FedGloSS uses a flatness-branch
+weight of 0.5.
 
 Train the corresponding same-seed ordinary coordinator before a recipe with
 the `weight_refinement` endpoint. These recipes evaluate raw and refined

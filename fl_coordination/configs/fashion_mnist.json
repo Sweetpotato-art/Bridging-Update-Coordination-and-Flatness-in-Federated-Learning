@@ -761,7 +761,7 @@
       "local_learning_rate": 0.001,
       "weight_decay": 0.0,
       "adaptive_sam": false,
-      "rho": 0.05,
+      "rho": 0.02,
       "flat_lambda": 1.0,
       "fedfv_alpha": 0.1,
       "fedfv_tau": 10,
@@ -796,7 +796,9 @@
       "fedgloss_admm": false,
       "coupling": "independent_g_and_h_coordination_then_sum",
       "bn_buffers": "client_local_clean_pass_once_per_batch",
-      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005"
+      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005",
+      "local_sam_rho": 0.01,
+      "probe_policy": "history_then_batch_local_sam"
     },
     "endpoint": "validation_selected",
     "engine": "fedgloss"
@@ -873,7 +875,7 @@
       "local_learning_rate": 0.001,
       "weight_decay": 0.0,
       "adaptive_sam": false,
-      "rho": 0.05,
+      "rho": 0.02,
       "flat_lambda": 1.0,
       "fedfv_alpha": 0.1,
       "fedfv_tau": 10,
@@ -908,7 +910,9 @@
       "fedgloss_admm": false,
       "coupling": "independent_g_and_h_coordination_then_sum",
       "bn_buffers": "client_local_clean_pass_once_per_batch",
-      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005"
+      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005",
+      "local_sam_rho": 0.01,
+      "probe_policy": "history_then_batch_local_sam"
     },
     "endpoint": "validation_selected",
     "engine": "fedgloss"
@@ -985,7 +989,7 @@
       "local_learning_rate": 0.001,
       "weight_decay": 0.0,
       "adaptive_sam": false,
-      "rho": 0.05,
+      "rho": 0.02,
       "flat_lambda": 1.0,
       "fedfv_alpha": 0.1,
       "fedfv_tau": 10,
@@ -1020,7 +1024,9 @@
       "fedgloss_admm": false,
       "coupling": "independent_g_and_h_coordination_then_sum",
       "bn_buffers": "client_local_clean_pass_once_per_batch",
-      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005"
+      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005",
+      "local_sam_rho": 0.01,
+      "probe_policy": "history_then_batch_local_sam"
     },
     "endpoint": "validation_selected",
     "engine": "fedgloss"
@@ -1097,7 +1103,7 @@
       "local_learning_rate": 0.001,
       "weight_decay": 0.0,
       "adaptive_sam": false,
-      "rho": 0.05,
+      "rho": 0.02,
       "flat_lambda": 1.0,
       "fedfv_alpha": 0.1,
       "fedfv_tau": 10,
@@ -1132,7 +1138,9 @@
       "fedgloss_admm": false,
       "coupling": "independent_g_and_h_coordination_then_sum",
       "bn_buffers": "client_local_clean_pass_once_per_batch",
-      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005"
+      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005",
+      "local_sam_rho": 0.01,
+      "probe_policy": "history_then_batch_local_sam"
     },
     "endpoint": "validation_selected",
     "engine": "fedgloss"
@@ -1153,7 +1161,7 @@
       "local_learning_rate": 0.001,
       "weight_decay": 0.0,
       "adaptive_sam": false,
-      "rho": 0.05,
+      "rho": 0.02,
       "flat_lambda": 1.0,
       "fedfv_alpha": 0.1,
       "fedfv_tau": 10,
@@ -1188,7 +1196,9 @@
       "fedgloss_admm": false,
       "coupling": "independent_g_and_h_coordination_then_sum",
       "bn_buffers": "client_local_clean_pass_once_per_batch",
-      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005"
+      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005",
+      "local_sam_rho": 0.01,
+      "probe_policy": "history_then_batch_local_sam"
     },
     "endpoint": "validation_selected",
     "engine": "fedgloss"
