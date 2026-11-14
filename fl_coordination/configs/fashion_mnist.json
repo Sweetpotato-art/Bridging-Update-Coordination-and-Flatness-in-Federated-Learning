@@ -1,0 +1,1196 @@
+{
+  "fedfv:asam": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3"
+    },
+    "endpoint": "validation_selected",
+    "engine": "sam"
+  },
+  "fedfv:sam": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3"
+    },
+    "endpoint": "validation_selected",
+    "engine": "split"
+  },
+  "fedfv:baseline": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3"
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedmgda:asam": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3"
+    },
+    "endpoint": "validation_selected",
+    "engine": "sam"
+  },
+  "fedmgda:baseline": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3"
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedmgda:sam": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3"
+    },
+    "endpoint": "validation_selected",
+    "engine": "split"
+  },
+  "fedawa:baseline": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedld:baseline": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedmdfg:sam": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "validation_selected",
+    "engine": "split"
+  },
+  "fedmdfg:asam": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "validation_selected",
+    "engine": "sam"
+  },
+  "fedmdfg:baseline": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedawa:sam": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "validation_selected",
+    "engine": "split"
+  },
+  "fedld:sam": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "validation_selected",
+    "engine": "split"
+  },
+  "fedawa:asam": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "validation_selected",
+    "engine": "sam"
+  },
+  "fedld:asam": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "validation_selected",
+    "engine": "sam"
+  },
+  "fedavg:baseline": {
+    "config": {
+      "protocol": "Fashion-Series-A-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "none",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "A3",
+      "private_optimizer": "adam"
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedld:gf": {
+    "config": {
+      "protocol": "Fashion-GlobalFlatness-Mechanisms-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "Fashion",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.006881969980895519,
+      "fedgf_window": 30,
+      "perturbation_scope": "shared_encoder_only",
+      "norm": "joint_l2_paper_equations",
+      "global_direction": "previous_raw_mean_client_pseudogradient",
+      "fedgloss_admm": false,
+      "coupling": "independent_g_and_h_coordination_then_sum",
+      "bn_buffers": "client_local_clean_pass_once_per_batch",
+      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgf"
+  },
+  "fedmdfg:gf": {
+    "config": {
+      "protocol": "Fashion-GlobalFlatness-Mechanisms-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "Fashion",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.006881969980895519,
+      "fedgf_window": 30,
+      "perturbation_scope": "shared_encoder_only",
+      "norm": "joint_l2_paper_equations",
+      "global_direction": "previous_raw_mean_client_pseudogradient",
+      "fedgloss_admm": false,
+      "coupling": "independent_g_and_h_coordination_then_sum",
+      "bn_buffers": "client_local_clean_pass_once_per_batch",
+      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgf"
+  },
+  "fedmdfg:gloss": {
+    "config": {
+      "protocol": "Fashion-GlobalFlatness-Mechanisms-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "Fashion",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.006881969980895519,
+      "fedgf_window": 30,
+      "perturbation_scope": "shared_encoder_only",
+      "norm": "joint_l2_paper_equations",
+      "global_direction": "previous_raw_mean_client_pseudogradient",
+      "fedgloss_admm": false,
+      "coupling": "independent_g_and_h_coordination_then_sum",
+      "bn_buffers": "client_local_clean_pass_once_per_batch",
+      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgloss"
+  },
+  "fedmgda:gf": {
+    "config": {
+      "protocol": "Fashion-GlobalFlatness-Mechanisms-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "Fashion",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.006881969980895519,
+      "fedgf_window": 30,
+      "perturbation_scope": "shared_encoder_only",
+      "norm": "joint_l2_paper_equations",
+      "global_direction": "previous_raw_mean_client_pseudogradient",
+      "fedgloss_admm": false,
+      "coupling": "independent_g_and_h_coordination_then_sum",
+      "bn_buffers": "client_local_clean_pass_once_per_batch",
+      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgf"
+  },
+  "fedmgda:gloss": {
+    "config": {
+      "protocol": "Fashion-GlobalFlatness-Mechanisms-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "Fashion",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.006881969980895519,
+      "fedgf_window": 30,
+      "perturbation_scope": "shared_encoder_only",
+      "norm": "joint_l2_paper_equations",
+      "global_direction": "previous_raw_mean_client_pseudogradient",
+      "fedgloss_admm": false,
+      "coupling": "independent_g_and_h_coordination_then_sum",
+      "bn_buffers": "client_local_clean_pass_once_per_batch",
+      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgloss"
+  },
+  "fedawa:gf": {
+    "config": {
+      "protocol": "Fashion-GlobalFlatness-Mechanisms-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "Fashion",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.006881969980895519,
+      "fedgf_window": 30,
+      "perturbation_scope": "shared_encoder_only",
+      "norm": "joint_l2_paper_equations",
+      "global_direction": "previous_raw_mean_client_pseudogradient",
+      "fedgloss_admm": false,
+      "coupling": "independent_g_and_h_coordination_then_sum",
+      "bn_buffers": "client_local_clean_pass_once_per_batch",
+      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgf"
+  },
+  "fedawa:gloss": {
+    "config": {
+      "protocol": "Fashion-GlobalFlatness-Mechanisms-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "Fashion",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.006881969980895519,
+      "fedgf_window": 30,
+      "perturbation_scope": "shared_encoder_only",
+      "norm": "joint_l2_paper_equations",
+      "global_direction": "previous_raw_mean_client_pseudogradient",
+      "fedgloss_admm": false,
+      "coupling": "independent_g_and_h_coordination_then_sum",
+      "bn_buffers": "client_local_clean_pass_once_per_batch",
+      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgloss"
+  },
+  "fedfv:gf": {
+    "config": {
+      "protocol": "Fashion-GlobalFlatness-Mechanisms-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "Fashion",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.006881969980895519,
+      "fedgf_window": 30,
+      "perturbation_scope": "shared_encoder_only",
+      "norm": "joint_l2_paper_equations",
+      "global_direction": "previous_raw_mean_client_pseudogradient",
+      "fedgloss_admm": false,
+      "coupling": "independent_g_and_h_coordination_then_sum",
+      "bn_buffers": "client_local_clean_pass_once_per_batch",
+      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgf"
+  },
+  "fedfv:gloss": {
+    "config": {
+      "protocol": "Fashion-GlobalFlatness-Mechanisms-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "Fashion",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.006881969980895519,
+      "fedgf_window": 30,
+      "perturbation_scope": "shared_encoder_only",
+      "norm": "joint_l2_paper_equations",
+      "global_direction": "previous_raw_mean_client_pseudogradient",
+      "fedgloss_admm": false,
+      "coupling": "independent_g_and_h_coordination_then_sum",
+      "bn_buffers": "client_local_clean_pass_once_per_batch",
+      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgloss"
+  },
+  "fedld:gloss": {
+    "config": {
+      "protocol": "Fashion-GlobalFlatness-Mechanisms-v1",
+      "seed": 2,
+      "clients": 5,
+      "epochs": 200,
+      "batch_size": 256,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "majority_fraction": 0.8,
+      "image_size": 36,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "deterministic": true,
+      "log_every_rounds": 50,
+      "participants": 5,
+      "local_steps": 5,
+      "case": "Fashion",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.006881969980895519,
+      "fedgf_window": 30,
+      "perturbation_scope": "shared_encoder_only",
+      "norm": "joint_l2_paper_equations",
+      "global_direction": "previous_raw_mean_client_pseudogradient",
+      "fedgloss_admm": false,
+      "coupling": "independent_g_and_h_coordination_then_sum",
+      "bn_buffers": "client_local_clean_pass_once_per_batch",
+      "fedgf_threshold_source": "training_only_median_of_9_rounds_first_epoch_fedfv_seed2_rho005"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgloss"
+  }
+}

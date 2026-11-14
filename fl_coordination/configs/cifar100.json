@@ -1,0 +1,1606 @@
+{
+  "fedfv:gf": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-GlobalFlatness-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private",
+      "fedgf_threshold": 0.0038716522161848844,
+      "fedgf_window": 30,
+      "fedgf_threshold_source": "training_only_first_epoch_fedfv_median",
+      "perturbation_scope": "shared_encoder_only",
+      "global_direction": "previous_fit_size_weighted_raw_local_delta",
+      "fedgloss_admm": false,
+      "coupling": "independent_g_and_h_coordination_then_sum"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgf"
+  },
+  "fedawa:gf": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-GlobalFlatness-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.2,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private",
+      "fedgf_threshold": 0.0038716522161848844,
+      "fedgf_window": 30,
+      "fedgf_threshold_source": "training_only_first_epoch_fedfv_median",
+      "perturbation_scope": "shared_encoder_only",
+      "global_direction": "previous_fit_size_weighted_raw_local_delta",
+      "fedgloss_admm": false,
+      "coupling": "independent_g_and_h_coordination_then_sum"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgf"
+  },
+  "fedld:gf": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-GlobalFlatness-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.01,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private",
+      "fedgf_threshold": 0.0038716522161848844,
+      "fedgf_window": 30,
+      "fedgf_threshold_source": "training_only_first_epoch_fedfv_median",
+      "perturbation_scope": "shared_encoder_only",
+      "global_direction": "previous_fit_size_weighted_raw_local_delta",
+      "fedgloss_admm": false,
+      "coupling": "independent_g_and_h_coordination_then_sum"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgf"
+  },
+  "fedmdfg:gf": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-GlobalFlatness-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private",
+      "fedgf_threshold": 0.0038716522161848844,
+      "fedgf_window": 30,
+      "fedgf_threshold_source": "training_only_first_epoch_fedfv_median",
+      "perturbation_scope": "shared_encoder_only",
+      "global_direction": "previous_fit_size_weighted_raw_local_delta",
+      "fedgloss_admm": false,
+      "coupling": "independent_g_and_h_coordination_then_sum"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgf"
+  },
+  "fedfv:sam": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-FVLD-v2",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.01,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedld": {
+          "k_proportion": 0.8,
+          "history_decay": 0.99,
+          "margin_regularizer": false
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedsam"
+  },
+  "fedawa:asam": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-ASAM-direct-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedasam"
+  },
+  "fedfv:asam": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-ASAM-direct-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedld": {
+          "k_proportion": 0.8,
+          "history_decay": 0.99,
+          "margin_regularizer": false
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedasam"
+  },
+  "fedld:asam": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-ASAM-direct-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedld": {
+          "k_proportion": 0.8,
+          "history_decay": 0.99,
+          "margin_regularizer": false
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedasam"
+  },
+  "fedmdfg:asam": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-ASAM-direct-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedasam"
+  },
+  "fedmgda:gf": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-MGDA-LF-six-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private",
+      "mechanism": "fedgf",
+      "fedgf_threshold": 0.0038716522161848844,
+      "fedgf_window": 30,
+      "fedgf_threshold_source": "training_only_first_epoch_fedfv_median",
+      "perturbation_scope": "shared_encoder_only",
+      "global_direction": "previous_fit_size_weighted_raw_local_delta",
+      "coupling": "independent_g_and_h_coordination_then_sum"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgf"
+  },
+  "fedmgda:asam": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-MGDA-LF-six-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 2.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private",
+      "mechanism": "fedasam"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedasam"
+  },
+  "fedfv:baseline": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-FVLD-v2",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.5,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedld": {
+          "k_proportion": 0.8,
+          "history_decay": 0.99,
+          "margin_regularizer": false
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private"
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedfv:gloss": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-GloSS-local-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.02,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedld": {
+          "k_proportion": 0.8,
+          "history_decay": 0.99,
+          "margin_regularizer": false
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private",
+      "fedgf_threshold": 0.0038716522161848844,
+      "fedgf_window": 30,
+      "fedgf_threshold_source": "training_only_first_epoch_fedfv_median",
+      "perturbation_scope": "shared_encoder_only",
+      "global_direction": "previous_fit_size_weighted_raw_local_delta",
+      "coupling": "independent_g_and_h_coordination_then_sum",
+      "mechanism": "fedgloss",
+      "local_sam_rho": 0.01,
+      "probe_policy": "history_then_batch_local_sam"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgloss_local"
+  },
+  "fedmdfg:baseline": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-extra-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.5,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private"
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedawa:baseline": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-extra-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.5,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private"
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedld:baseline": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-FVLD-v2",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.5,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedld": {
+          "k_proportion": 0.8,
+          "history_decay": 0.99,
+          "margin_regularizer": false
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private"
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedmgda:baseline": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-extra-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.5,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private"
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedld:gloss": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-GloSS-local-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.02,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedld": {
+          "k_proportion": 0.8,
+          "history_decay": 0.99,
+          "margin_regularizer": false
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private",
+      "fedgf_threshold": 0.0038716522161848844,
+      "fedgf_window": 30,
+      "fedgf_threshold_source": "training_only_first_epoch_fedfv_median",
+      "perturbation_scope": "shared_encoder_only",
+      "global_direction": "previous_fit_size_weighted_raw_local_delta",
+      "coupling": "independent_g_and_h_coordination_then_sum",
+      "mechanism": "fedgloss",
+      "local_sam_rho": 0.01,
+      "probe_policy": "history_then_batch_local_sam"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgloss_local"
+  },
+  "fedawa:gloss": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-GloSS-local-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.02,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private",
+      "fedgf_threshold": 0.0038716522161848844,
+      "fedgf_window": 30,
+      "fedgf_threshold_source": "training_only_first_epoch_fedfv_median",
+      "perturbation_scope": "shared_encoder_only",
+      "global_direction": "previous_fit_size_weighted_raw_local_delta",
+      "coupling": "independent_g_and_h_coordination_then_sum",
+      "mechanism": "fedgloss",
+      "local_sam_rho": 0.01,
+      "probe_policy": "history_then_batch_local_sam"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgloss_local"
+  },
+  "fedmdfg:gloss": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-GloSS-local-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.02,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private",
+      "fedgf_threshold": 0.0038716522161848844,
+      "fedgf_window": 30,
+      "fedgf_threshold_source": "training_only_first_epoch_fedfv_median",
+      "perturbation_scope": "shared_encoder_only",
+      "global_direction": "previous_fit_size_weighted_raw_local_delta",
+      "coupling": "independent_g_and_h_coordination_then_sum",
+      "mechanism": "fedgloss",
+      "local_sam_rho": 0.01,
+      "probe_policy": "history_then_batch_local_sam"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgloss_local"
+  },
+  "fedmgda:gloss": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-GloSS-local-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.02,
+      "flat_lambda": 0.5,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private",
+      "fedgf_threshold": 0.0038716522161848844,
+      "fedgf_window": 30,
+      "fedgf_threshold_source": "training_only_first_epoch_fedfv_median",
+      "perturbation_scope": "shared_encoder_only",
+      "global_direction": "previous_fit_size_weighted_raw_local_delta",
+      "coupling": "independent_g_and_h_coordination_then_sum",
+      "mechanism": "fedgloss",
+      "local_sam_rho": 0.01,
+      "probe_policy": "history_then_batch_local_sam"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedgloss_local"
+  },
+  "fedld:sam": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-FVLD-v2",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.5,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedld": {
+          "k_proportion": 0.8,
+          "history_decay": 0.99,
+          "margin_regularizer": false
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedsam"
+  },
+  "fedmdfg:sam": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-extra-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.5,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedsam"
+  },
+  "fedavg:baseline": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-FedAvg-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "none",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.0,
+      "flat_lambda": 0.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedld": {
+          "k_proportion": 0.8,
+          "history_decay": 0.99,
+          "margin_regularizer": false
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private",
+      "private_optimizer": "adam"
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedawa:sam": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-extra-v1",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.5,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedsam"
+  },
+  "fedmgda:sam": {
+    "config": {
+      "protocol": "CIFAR100-ResNet20-FVLD-v2",
+      "dataset": "CIFAR100",
+      "seed": 2,
+      "clients": 20,
+      "participants": 20,
+      "num_classes": 100,
+      "epochs": 300,
+      "batch_size": 128,
+      "eval_batch_size": 512,
+      "validation_fraction": 0.1,
+      "dirichlet_alpha": 0.5,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.01,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "image_size": 32,
+      "normalization_mean": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "normalization_std": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "augmentation": "random_crop_pad4_horizontal_flip",
+      "deterministic": true,
+      "log_every_rounds": 20,
+      "case": "CIFAR100-private"
+    },
+    "endpoint": "validation_selected",
+    "engine": "fedsam"
+  }
+}

@@ -1,0 +1,1846 @@
+{
+  "fedfv:baseline": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 0.0,
+      "flat_lambda": 0.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "baseline"
+  },
+  "fedmgda:baseline": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.0,
+      "flat_lambda": 0.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedmgda",
+      "mechanism": "baseline",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "baseline"
+  },
+  "fedmdfg:baseline": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.0,
+      "flat_lambda": 0.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "coordinator": "fedmdfg",
+      "mechanism": "baseline"
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "baseline"
+  },
+  "fedld:baseline": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.0,
+      "flat_lambda": 0.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "coordinator": "fedld",
+      "mechanism": "baseline"
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "baseline"
+  },
+  "fedawa:baseline": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.0,
+      "flat_lambda": 0.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "operators": {
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        }
+      }
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "baseline"
+  },
+  "fedavg:baseline": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "none",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 0.0,
+      "flat_lambda": 0.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "baseline"
+  },
+  "fedfv:asam": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 1.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedfv",
+      "mechanism": "asam",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedld:sam": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.01,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "coordinator": "fedld",
+      "mechanism": "sam"
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "matrix"
+  },
+  "fedld:gf": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.2,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedld",
+      "mechanism": "gf",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.016326043056324124,
+      "fedgf_window": 30
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedld:asam": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedld",
+      "mechanism": "asam",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedld:gloss": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.02,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedld",
+      "mechanism": "gloss",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.016326043056324124,
+      "fedgf_window": 30,
+      "local_sam_rho": 0.01,
+      "probe_policy": "historical_shift_then_fresh_local_sam_each_batch"
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "complete"
+  },
+  "fedmgda:asam": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedmgda",
+      "mechanism": "asam",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedawa:gf": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.2,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedawa",
+      "mechanism": "gf",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.016326043056324124,
+      "fedgf_window": 30
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedfv:sam": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.2,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedfv",
+      "mechanism": "sam",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedfv:gf": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.2,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedfv",
+      "mechanism": "gf",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.016326043056324124,
+      "fedgf_window": 30
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedmdfg:asam": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 1.0,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedmdfg",
+      "mechanism": "asam",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedfv:gloss": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.2,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedfv",
+      "mechanism": "gloss",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.016326043056324124,
+      "fedgf_window": 30,
+      "local_sam_rho": 0.01,
+      "probe_policy": "historical_shift_then_fresh_local_sam_each_batch"
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedmgda:sam": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.01,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedmgda",
+      "mechanism": "sam",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "complete"
+  },
+  "fedmgda:gloss": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.2,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedmgda",
+      "mechanism": "gloss",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.016326043056324124,
+      "fedgf_window": 30,
+      "local_sam_rho": 0.01,
+      "probe_policy": "historical_shift_then_fresh_local_sam_each_batch"
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedawa:sam": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.01,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "coordinator": "fedawa",
+      "mechanism": "sam"
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "matrix"
+  },
+  "fedmdfg:sam": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.2,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedmdfg",
+      "mechanism": "sam",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedmdfg:gloss": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.02,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedmdfg",
+      "mechanism": "gloss",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.016326043056324124,
+      "fedgf_window": 30,
+      "local_sam_rho": 0.01,
+      "probe_policy": "historical_shift_then_fresh_local_sam_each_batch"
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "complete"
+  },
+  "fedmgda:gf": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.2,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedmgda",
+      "mechanism": "gf",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.016326043056324124,
+      "fedgf_window": 30
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedmdfg:gf": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.05,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "coordinator": "fedmdfg",
+      "mechanism": "gf",
+      "fedgf_threshold": 0.016326043056324124,
+      "fedgf_window": 30
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "matrix"
+  },
+  "fedawa:asam": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": true,
+      "rho": 0.5,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedawa",
+      "mechanism": "asam_direct",
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "asam"
+  },
+  "fedawa:gloss": {
+    "config": {
+      "protocol": "OfficeHome-R18-private-v1",
+      "case": "OfficeHome-private",
+      "dataset": "OfficeHome",
+      "seed": 2,
+      "clients": 4,
+      "participants": 4,
+      "num_classes": 65,
+      "epochs": 100,
+      "checkpoint_epochs": [
+        100
+      ],
+      "batch_size": 16,
+      "eval_batch_size": 64,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "local_steps": 5,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "local_learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "weight_decay": 0.0,
+      "adaptive_sam": false,
+      "rho": 0.02,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 224,
+      "resize_shorter": 256,
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "augmentation": "resize_short256_random_crop224_horizontal_flip",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "deterministic": true,
+      "log_every_rounds": 10,
+      "io_workers": 4,
+      "coordinator": "fedawa",
+      "mechanism": "gloss",
+      "mgda_epsilon": 1.0,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "fedgf_threshold": 0.016326043056324124,
+      "fedgf_window": 30,
+      "local_sam_rho": 0.01,
+      "probe_policy": "historical_shift_then_fresh_local_sam_each_batch"
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "complete"
+  }
+}

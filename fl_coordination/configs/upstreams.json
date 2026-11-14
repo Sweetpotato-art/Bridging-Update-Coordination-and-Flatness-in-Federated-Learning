@@ -1,0 +1,26 @@
+{
+  "FedAWA/server_funct.py": {
+    "url": "https://raw.githubusercontent.com/ChanglongShi/FedAWA/2d719bc87ce560a8970c7b18772dec4541fe64e4/server_funct.py",
+    "sha256": "3710474307758db7966fd08ebdfa8693b134cfad1f3ec676fb11ef4ba42df3ec"
+  },
+  "FedMDFG/fedplat/algorithm/common/utils.py": {
+    "url": "https://raw.githubusercontent.com/zibinpan/FedMDFG/ae862e56e7c11c8cd4d995bbeb3572e3c1e37484/fedplat/algorithm/common/utils.py",
+    "sha256": "c816143ddabded9cba3c4ceb44e44d806446ced41af2bd64c4ccd48420b4388b"
+  },
+  "FedFV/method/fedfv.py": {
+    "url": "https://raw.githubusercontent.com/WwZzz/easyFL/b721564dd64b20a45564915bfcc18f9df4ae1951/method/fedfv.py",
+    "sha256": "0686f71172f7ac0b838e3ee4d483e1cae62b3538f96763e82452c0d8dcc94aaf"
+  },
+  "FedFV/task/modelfuncs.py": {
+    "url": "https://raw.githubusercontent.com/WwZzz/easyFL/b721564dd64b20a45564915bfcc18f9df4ae1951/task/modelfuncs.py",
+    "sha256": "3e4f7c8d33f6cb6801f405d8f2e46ecf3677b27c3f9832cde11f52e94de4dfb2"
+  },
+  "FedMGDAPlus/main/utils.py": {
+    "url": "https://raw.githubusercontent.com/watml/Fed-MGDA/c8d8586bd883d2a88ea93c8cf6edc22a47c716fa/main/utils.py",
+    "sha256": "b91d1751489d7358bd240ff2a682241bfa964c10db189a8f5eb2d72dd165ea4f"
+  },
+  "FedAWA_ResNet20/resnet.py": {
+    "url": "https://raw.githubusercontent.com/ChanglongShi/FedAWA/2d719bc87ce560a8970c7b18772dec4541fe64e4/models_dict/resnet.py",
+    "sha256": "61416dabd58be8c29e9b3afeb197e948d078413f714e2f73968c4cab81259d09"
+  }
+}

@@ -1,0 +1,2015 @@
+{
+  "fedfv:baseline": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.0,
+      "adaptive_sam": true,
+      "flat_lambda": 0.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedmgda:baseline": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.0,
+      "adaptive_sam": false,
+      "flat_lambda": 0.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedmgda",
+      "mechanism": "baseline",
+      "local_steps": 2,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedmdfg:baseline": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.0,
+      "adaptive_sam": false,
+      "flat_lambda": 0.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedmdfg",
+      "mechanism": "baseline",
+      "local_steps": 2,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedld:baseline": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.0,
+      "adaptive_sam": false,
+      "flat_lambda": 0.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedld",
+      "mechanism": "baseline",
+      "local_steps": 2,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedawa:baseline": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.0,
+      "adaptive_sam": true,
+      "flat_lambda": 0.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "operators": {
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        }
+      }
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedavg:baseline": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.0,
+      "adaptive_sam": true,
+      "flat_lambda": 0.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1
+    },
+    "endpoint": "validation_selected",
+    "engine": "baseline"
+  },
+  "fedfv:sam": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.2,
+      "adaptive_sam": false,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedfv",
+      "mechanism": "sam",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedfv:gloss": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 2.0,
+      "adaptive_sam": false,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedfv",
+      "mechanism": "gloss",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0,
+      "fedgf_threshold": 0.0,
+      "fedgf_window": 30,
+      "local_sam_rho": 0.01
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedmdfg:asam": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.5,
+      "adaptive_sam": true,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedmdfg",
+      "mechanism": "asam",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedfv:asam": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 2.0,
+      "adaptive_sam": true,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "standard"
+  },
+  "fedfv:gf": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.2,
+      "adaptive_sam": false,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedfv",
+      "mechanism": "gf",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0,
+      "fedgf_threshold": 0.14406830854713917,
+      "fedgf_window": 30
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedmgda:asam": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 2.0,
+      "adaptive_sam": true,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedmgda",
+      "mechanism": "asam",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0
+    },
+    "endpoint": "validation_selected",
+    "engine": "complete"
+  },
+  "fedmgda:gf": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.05,
+      "adaptive_sam": false,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedmgda",
+      "mechanism": "gf",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0,
+      "fedgf_threshold": 0.14406830854713917,
+      "fedgf_window": 30
+    },
+    "endpoint": "validation_selected",
+    "engine": "complete"
+  },
+  "fedmgda:gloss": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.02,
+      "adaptive_sam": false,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedmgda",
+      "mechanism": "gloss",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0,
+      "fedgf_threshold": 0.0,
+      "fedgf_window": 30,
+      "local_sam_rho": 0.01
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "complete"
+  },
+  "fedmdfg:sam": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.01,
+      "adaptive_sam": false,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedmdfg",
+      "mechanism": "sam",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      }
+    },
+    "endpoint": "validation_selected",
+    "engine": "matrix"
+  },
+  "fedmdfg:gf": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.2,
+      "adaptive_sam": false,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedmdfg",
+      "mechanism": "gf",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0,
+      "fedgf_threshold": 0.14406830854713917,
+      "fedgf_window": 30
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedawa:sam": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.2,
+      "adaptive_sam": false,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedawa",
+      "mechanism": "sam",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedawa:asam": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 2.0,
+      "adaptive_sam": true,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "operators": {
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        }
+      }
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "standard"
+  },
+  "fedawa:gf": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.2,
+      "adaptive_sam": false,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedawa",
+      "mechanism": "gf",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0,
+      "fedgf_threshold": 0.14406830854713917,
+      "fedgf_window": 30
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedawa:gloss": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.02,
+      "adaptive_sam": false,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedawa",
+      "mechanism": "gloss",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0,
+      "fedgf_threshold": 0.0,
+      "fedgf_window": 30,
+      "local_sam_rho": 0.01
+    },
+    "endpoint": "fixed_epoch",
+    "engine": "complete"
+  },
+  "fedld:asam": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 2.0,
+      "adaptive_sam": true,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedld",
+      "mechanism": "asam",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0
+    },
+    "endpoint": "validation_selected",
+    "engine": "complete"
+  },
+  "fedmgda:sam": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.2,
+      "adaptive_sam": false,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedmgda",
+      "mechanism": "sam",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedmdfg:gloss": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.2,
+      "adaptive_sam": false,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedmdfg",
+      "mechanism": "gloss",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0,
+      "fedgf_threshold": 0.0,
+      "fedgf_window": 30,
+      "local_sam_rho": 0.01
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedld:sam": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.2,
+      "adaptive_sam": false,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedld",
+      "mechanism": "sam",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedld:gf": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 0.2,
+      "adaptive_sam": false,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedld",
+      "mechanism": "gf",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0,
+      "fedgf_threshold": 0.14406830854713917,
+      "fedgf_window": 30
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  },
+  "fedld:gloss": {
+    "config": {
+      "protocol": "Retina-R18-private-patient-E100-v1",
+      "backbone": "resnet18",
+      "dataset": "FedLD Retina",
+      "author_split": "2",
+      "seed": 2,
+      "clients": 5,
+      "participants": 5,
+      "num_classes": 2,
+      "rounds": 100,
+      "local_epochs": 1,
+      "checkpoint_rounds": [
+        50,
+        100
+      ],
+      "batch_size": 50,
+      "eval_batch_size": 50,
+      "validation_fraction": 0.1,
+      "test_fraction": 0.2,
+      "head_mode": "private",
+      "bn_policy": "client_local_running_statistics",
+      "optimizer": "adam",
+      "private_optimizer": "adam",
+      "learning_rate": 0.001,
+      "server_learning_rate": 0.0001,
+      "local_learning_rate": 0.01,
+      "weight_decay": 0.0,
+      "rho": 2.0,
+      "adaptive_sam": false,
+      "flat_lambda": 1.0,
+      "fedfv_alpha": 0.1,
+      "fedfv_tau": 10,
+      "image_size": 256,
+      "author_float_pixel_range": "0_255",
+      "pretrained": "ResNet18_Weights.IMAGENET1K_V1",
+      "normalization_mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "normalization_std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "crop_scale": [
+        0.6,
+        1.0
+      ],
+      "rotation_degrees": 10,
+      "io_workers": 4,
+      "deterministic": true,
+      "evaluate_every": 1,
+      "save_every": 1,
+      "coordinator": "fedld",
+      "mechanism": "gloss",
+      "local_steps": 40,
+      "operators": {
+        "fedmdfg": {
+          "theta": 11.25,
+          "line_search": false
+        },
+        "fedawa": {
+          "server_epochs": 1,
+          "server_optimizer": "adam",
+          "gamma": 1.0,
+          "reg_distance": "cos"
+        },
+        "fedld": {
+          "k_proportion": 0.8,
+          "margin_regularizer": false,
+          "history_decay": 0.99
+        }
+      },
+      "mgda_epsilon": 1.0,
+      "fedgf_threshold": 0.0,
+      "fedgf_window": 30,
+      "local_sam_rho": 0.01
+    },
+    "endpoint": "weight_refinement",
+    "engine": "refinement"
+  }
+}
