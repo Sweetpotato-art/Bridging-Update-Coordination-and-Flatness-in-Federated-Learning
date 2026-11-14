@@ -1,4 +1,4 @@
-"""Existing Retina numerical kernels; no changes to the raw training trajectory."""
+"""Retina trainer bindings for evaluation with weight averaging."""
 from fl_coordination._impl.fedretinacomplete.engine import GFEngine,GloSSLocalEngine
 from fl_coordination._impl.fedretinamatrix.engine import SAMEngine
 from fl_coordination._impl.fedretina.model import build_network

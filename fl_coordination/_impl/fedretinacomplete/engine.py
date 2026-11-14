@@ -1,4 +1,4 @@
-"""Reuse full Retina trajectories, existing author coordinators and local probes."""
+"""Retina coordination adapters for baseline and flatness recipes."""
 import math
 from fl_coordination._impl.fedcifar.engine import Engine as CoordinatorEngine
 from fl_coordination._impl.fedcifarglobalflat.engine import Engine as FlatEngine

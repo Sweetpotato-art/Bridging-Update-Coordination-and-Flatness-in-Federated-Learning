@@ -19,7 +19,7 @@ def gram64(updates):
 
 
 def centered_constraints(n, epsilon):
-    # Exactly the inequalities in vendor/FedMGDAPlus/main/utils.py.
+    # Encode the source solver's centered box constraints.
     eye = np.eye(n, dtype=float)
     c = np.concatenate((np.ones((n, 1)), eye, eye, -eye), axis=1)
     b = np.concatenate(([1.], np.zeros(n), np.full(n, 1./n-epsilon),

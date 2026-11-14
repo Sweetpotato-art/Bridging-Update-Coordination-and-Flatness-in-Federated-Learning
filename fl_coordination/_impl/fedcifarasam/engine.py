@@ -1,4 +1,4 @@
-"""Frozen ASAM/local trajectory; one direct coordinator, no branch fusion."""
+"""Direct coordination of trajectory-mean ASAM gradients for CIFAR-100."""
 from fl_coordination._impl.fedcifar.engine import Engine as OriginalEngine
 from fl_coordination._impl.fedcifarextra.operators import make_coordinator
 from fl_coordination._impl.fedmini.model import flatten
@@ -7,7 +7,7 @@ from .config import NAMES
 
 def method_label(coordinator,variant,config=None):
     if coordinator not in NAMES or variant!='sam':
-        raise ValueError('Only four ASAM direct combinations are enabled')
+        raise ValueError('Unsupported CIFAR-100 direct ASAM recipe')
     return NAMES[coordinator]+'-FedASAM-direct'
 
 
@@ -23,7 +23,7 @@ class Engine(OriginalEngine):
             raise ValueError('Use ASAM with private classifier heads')
         super().__init__(config,coordinator,variant,device,network)
         if coordinator=='fedawa':
-            # Exactly the existing CIFAR FedAWA unequal-K_i adapter.
+            # Use each client's local step count in its FedAWA pseudo-endpoint.
             layout=[(name,p.numel()) for name,p in self.encoder.named_parameters()]
             self.g_coordinator=make_coordinator(coordinator,config,device,layout)
             self.h_coordinator=make_coordinator(coordinator,config,device,layout)

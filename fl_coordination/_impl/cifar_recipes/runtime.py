@@ -1,4 +1,4 @@
-"""Only route the tested engines; do not change any aggregation or probe formula."""
+"""Dispatch the configured CIFAR-100 training recipe."""
 from types import FunctionType
 from pathlib import Path
 from .protocol import label, display, variant

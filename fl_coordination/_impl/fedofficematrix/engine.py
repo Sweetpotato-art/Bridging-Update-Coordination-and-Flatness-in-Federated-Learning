@@ -1,4 +1,4 @@
-"""Use existing checked branch arithmetic and unequal-step author adapters."""
+"""Office-Home training with separate coordination for SAM and FedGF."""
 from fl_coordination._impl.fedcifar.engine import Engine as TrajectoryEngine
 from fl_coordination._impl.fedcifarextra.operators import make_coordinator
 from fl_coordination._impl.fedcifarglobalflat.engine import Engine as GFEngine

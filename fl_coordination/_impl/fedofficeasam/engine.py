@@ -1,4 +1,4 @@
-"""Reuse adaptive joint perturbation and direct A(mean p), including unequal-K AWA."""
+"""Office-Home training with direct coordination of ASAM trajectory gradients."""
 from fl_coordination._impl.fedcifarasam.engine import Engine as DirectASAM
 from fl_coordination._impl.fedoffice.model import build_network
 from .config import parse_job

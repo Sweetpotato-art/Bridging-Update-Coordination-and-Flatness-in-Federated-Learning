@@ -11,7 +11,7 @@ def build_network(clients=2):
     encoder = resnet18(weights=None)
     encoder.conv1 = nn.Conv2d(1, 64, 7, stride=2, padding=3, bias=False)
     encoder.fc = nn.Linear(512, 100)
-    # The ReLU follows encoder.fc, exactly as in the pinned F-MTL forward.
+    # Apply ReLU after the shared feature projection.
     encoder = nn.Sequential(encoder, nn.ReLU())
     heads = nn.ModuleList([nn.Linear(100, 10) for _ in range(clients)])
     return encoder, heads

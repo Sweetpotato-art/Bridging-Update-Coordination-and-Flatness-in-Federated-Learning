@@ -40,42 +40,47 @@ Pretrained ResNet-18 weights are obtained through torchvision.
 
 ## Train and summarize
 
-List finalized recipes with `python -m fl_coordination list cifar100`. Each
-dataset contains FedAvg, the five ordinary coordinators, and the twenty
-combinations, all with seeds 0, 1, and 2. Each invocation runs one job.
+List recipes with `python -m fl_coordination list cifar100`. Each dataset
+has one FedAvg recipe, five coordination-only recipes, and twenty combinations.
+Each training invocation runs one recipe and one seed.
 
 ```bash
-python -m fl_coordination train cifar100 --data-root datasets/cifar100 \
-  --coordinator fedfv --seed 2
-python -m fl_coordination train cifar100 --data-root datasets/cifar100 \
-  --coordinator fedfv --mechanism asam --seed 2
+for seed in 0 1 2; do
+  python -m fl_coordination train cifar100 --data-root datasets/cifar100 \
+    --coordinator fedfv --seed "$seed"
+  python -m fl_coordination train cifar100 --data-root datasets/cifar100 \
+    --coordinator fedfv --mechanism asam --seed "$seed"
+done
 python -m fl_coordination summarize cifar100 --coordinator fedfv --mechanism asam
 ```
 
 Coordinator identifiers are `fedavg`, `fedfv`, `fedmgda`, `fedmdfg`, `fedld`,
 and `fedawa`. Mechanism identifiers are `baseline` (the default), `sam`, `asam`,
-`gf`, and `gloss`. On Fashion-MNIST the historical `sam` table row uses ASAM
-with separate coordination and `asam` uses the same perturbation with direct
-coordination. On the other datasets `sam` uses standard SAM with separate
-coordination. FedGloSS adds a fresh local SAM probe after the historical global shift.
-On Fashion-MNIST, the global and local radii are 0.02 and 0.01 for every
-coordinator. On CIFAR-100, FedMGDA+ with FedGloSS uses a flatness-branch
-weight of 0.5.
+`gf`, and `gloss`. For the Fashion-MNIST coordination-order comparison, use
+`sam` for separately coordinated ASAM and `asam` for directly coordinated
+ASAM. On CIFAR-100, Office-Home, and Retina, `sam` uses standard SAM with
+separate coordination. The files in `fl_coordination/configs/` specify the
+final radius, branch weight, and evaluation endpoint for each recipe.
 
-Train the corresponding same-seed ordinary coordinator before a recipe with
-the `weight_refinement` endpoint. These recipes evaluate raw and refined
-weights from a single trajectory. Validation data control the selection. The Office-Home and Retina recipes specify which checkpoint to report.
-Immutable run metadata record the split and configuration. Metrics and model
-weights are written separately under `runs/results` and `runs/checkpoints`.
-Reusing the same options resumes the same run. `summarize` requires three
-completed seeds and reports seed means, sample standard deviations, and
-paired gains in percentage points. Retina additionally reports macro AUROC over clients whose test data contain both classes, with client counts for each seed.
+For validation-selected runs, the checkpoint with the highest mean client
+validation accuracy is used, with ties resolved by the earliest evaluation.
+For recipes that use training-time weight averaging, train the corresponding
+coordination-only recipe for the same seed first. Averaged and raw checkpoints
+are evaluated from one training trajectory.
+
+Metrics and checkpoints are stored under `runs/results` and `runs/checkpoints`.
+To resume, use the same code version, data, recipe, seed, and output paths.
+For a fresh run with different inputs or code, use new `--results` and
+`--weights` roots. `summarize` reports the mean and sample standard deviation
+across three seeds for client-mean and worst-client test accuracy. The gain is
+the paired difference in client-mean accuracy from the same-seed
+coordination-only recipe, in percentage points.
 
 ## Numerical diagnostics
 
-Run the Fashion-MNIST seed-2 training recipes first. The terminal-state
-checkpoint is `last.pt`. Give each diagnostic command its matching result
-directory and checkpoint.
+Run the Fashion-MNIST seed-2 training recipes first. Give each diagnostic
+command the corresponding result directory and `last.pt` checkpoint from
+Epoch 200.
 
 - `branch-replay` uses FedAWA-Agg with separately coordinated ASAM
   (`--mechanism sam`). It reconstructs the nine replay blocks and returns

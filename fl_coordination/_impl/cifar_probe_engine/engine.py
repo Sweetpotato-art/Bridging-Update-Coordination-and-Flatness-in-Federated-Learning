@@ -1,4 +1,4 @@
-"""Reuse the tested local trajectory; introduce only the new mechanism adapter."""
+"""CIFAR-100 trajectory training with paired probes."""
 from types import FunctionType
 from fl_coordination._impl.fedcifar.engine import Engine as BaseEngine
 from fl_coordination._impl.fedcifarglobalflat.engine import Engine as FlatEngine
@@ -19,7 +19,7 @@ _init=FunctionType(BaseEngine.__init__.__code__,
 
 
 def method_label(c,m,config=None):
-    if (c,m) not in NEW_JOBS:raise ValueError('Only twelve new mechanism combinations')
+    if (c,m) not in NEW_JOBS:raise ValueError('Unsupported CIFAR-100 probe recipe')
     return NAMES[c]+'-'+FLAT_NAMES[m]+'-split'
 
 

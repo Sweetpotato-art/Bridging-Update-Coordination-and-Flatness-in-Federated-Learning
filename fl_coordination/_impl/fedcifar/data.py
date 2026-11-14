@@ -48,7 +48,7 @@ def partition(train_labels, test_labels, config):
             for cid, indices in enumerate(pieces):
                 result[split][cid].extend(indices.tolist())
     if any(not ids for clients in result.values() for ids in clients):
-        raise ValueError('Partition produced an empty client split; use an explicit new configuration')
+        raise ValueError('The configured partition produced an empty client split')
     return result, weights
 
 
@@ -113,19 +113,18 @@ class Data(BaseData):
 
 
 def epoch_plan(data, config, epoch):
-    """All clients participate; each fitting example is used exactly once.
+    """Distribute each client's fitting batches across the same number of rounds.
 
-    Unequal client sizes require unequal K_i. Spread each client's mini-batches
-    across the same number of rounds, with 1 <= K_i <= the declared maximum.
-    This is an explicit scheduling adaptation, not fixed-K FedAvg.
+    Each fitting example is used once per epoch. Each round assigns one to
+    the configured maximum number of local steps per client.
     """
     if config['participants'] != config['clients']:
         raise ValueError('This recipe is full participation')
     batches = data.epoch_indices(epoch)
     rounds = max(math.ceil(len(b) / config['local_steps']) for b in batches)
     if min(map(len, batches)) < rounds:
-        raise ValueError('Full participation/exact coverage/K limit cannot all hold for this split; '
-                         'choose a new batch size or partition explicitly, never repeat data')
+        raise ValueError('The partition cannot satisfy full participation, full data coverage, '
+                         'and the configured local step limit')
     groups = []
     for client in batches:
         cuts = np.array_split(np.arange(len(client)), rounds)

@@ -1,4 +1,4 @@
-"""Reuse the exact frozen CIFAR-100 loop without changing its globals or hash."""
+"""CIFAR-100 training and checkpointing with FedAvg."""
 from types import FunctionType
 
 from fl_coordination._impl.fedcifar import runtime as frozen

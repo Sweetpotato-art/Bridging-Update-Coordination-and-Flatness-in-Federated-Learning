@@ -1,9 +1,4 @@
-"""ST-retention multi-valley refinement attached to the official Flat-MTL path.
-
-One epoch-dense segment is sampled after every successful optimizer step.  A
-single segment sampler is shared by every refinement parameter candidate, so the
-parameter grid does not duplicate the training trajectory or write epoch
-checkpoints to disk.
+"""Training-time weight averaging over shared and client model states.
 """
 
 from __future__ import annotations
@@ -58,7 +53,7 @@ def _merge_state(
 
 
 class DenseEpochSampler:
-    """Reference post-update averaging; no Satis acceleration path."""
+    """Average the model state after each update within an epoch."""
     def __init__(self, model, *, update_implementation="reference"):
         if update_implementation != "reference": raise ValueError("Use reference refinement")
         self.module = copy.deepcopy(model).requires_grad_(False).eval()
@@ -148,12 +143,7 @@ class WeightedStateAverage:
 
 
 class LossValleyDetector:
-    """LossValley detection with each eligible dense segment counted once.
-
-    The convergence-window head defines the start. A longer tolerance queue
-    delays incorporation; it must neither re-add its head while filling nor
-    backfill segments preceding that start. Window sizes and loss thresholds
-    are unchanged by the unique-segment averaging correction.
+    """Track an averaging interval and count each eligible epoch segment once.
     """
 
     def __init__(self, n_converge: int, n_tolerance: int, tolerance_ratio: float):

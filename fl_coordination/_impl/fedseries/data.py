@@ -9,10 +9,10 @@ from fl_coordination._impl.fedmini.data import Data as MiniData, fingerprint
 
 
 def partition(train_labels, test_labels, seed=2, val_fraction=.1, majority=.8):
-    """Client c owns classes 2c/2c+1: 80% to owner, 5% to each other client.
+    """Allocate each class to one preferred client and four other clients.
 
-    This five-client label split is intentionally a new protocol, not the old
-    two-client even/odd split. All four Series A cases use exactly these indices.
+    In the paper configuration, the preferred client receives 80% of its
+    preferred class samples, and each other client receives 5%.
     """
     if not 0 < val_fraction < .5 or not .2 < majority < 1:
         raise ValueError('Invalid validation or preferred-class fraction')
@@ -45,7 +45,7 @@ def partition(train_labels, test_labels, seed=2, val_fraction=.1, majority=.8):
 class Data(MiniData):
     def __init__(self, train_images, train_labels, test_images, test_labels, config):
         if config['clients'] != 5:
-            raise ValueError('Series A is a five-client protocol')
+            raise ValueError('Fashion-MNIST requires five clients')
         self.images = {'fit': train_images, 'validation': train_images, 'test': test_images}
         self.labels = {'fit': train_labels, 'validation': train_labels, 'test': test_labels}
         self.config = config
@@ -54,7 +54,7 @@ class Data(MiniData):
         self.fit_sizes = [len(ids) for ids in self.indices['fit']]
         self.steps_per_client = [math.ceil(n / config['batch_size']) for n in self.fit_sizes]
         if len(set(self.fit_sizes)) != 1:
-            raise ValueError('The fixed Series A protocol requires balanced client sizes')
+            raise ValueError('Fashion-MNIST requires equal fitting-set sizes')
         self.steps_per_epoch = self.steps_per_client[0]
         self.samples_per_epoch = sum(self.fit_sizes)
         digest = hashlib.sha256()
@@ -71,12 +71,10 @@ class Data(MiniData):
 
 
 def epoch_plan(data, config, epoch):
-    """Balanced random participation, identical data order across all cases.
+    """Group each client's fitting batches into local steps for one data epoch.
 
-    Every client traverses its own training set once per epoch. Sample clients
-    with the most remaining blocks, break ties with a separate seeded RNG.
-    A final round may contain fewer clients (A2: two); never pad or repeat data.
-    Each client's last block may have fewer than K mini-batches (A3/A4: three).
+    When selecting a subset of clients, prioritize those with more remaining
+    blocks and break ties using a seeded generator. Keep partial final blocks.
     """
     batches = data.epoch_indices(epoch)
     k, m = config['local_steps'], config['participants']

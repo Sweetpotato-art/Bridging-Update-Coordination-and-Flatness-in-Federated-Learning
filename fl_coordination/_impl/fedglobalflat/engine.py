@@ -1,4 +1,4 @@
-"""Five unchanged first-order coordinators, two independent branch states."""
+"""Fashion-MNIST global probe adapters with independent branch states."""
 import numpy as np
 import torch
 
@@ -104,8 +104,7 @@ class Engine(BaseEngine):
         for module in (self.encoder, self.heads):
             if not all(bool(torch.isfinite(p).all()) for p in module.parameters()):
                 raise FloatingPointError('Nonfinite parameters after optimizer step')
-        # Raw endpoint mean is kept separately from both coordinated directions
-        # and the Adam-preconditioned actual update. No extra coordinator state.
+        # Average the clients' trajectory-mean probe gradients for the global reference.
         mean_p = torch.zeros_like(dg)
         for g, h in zip(gs, hs):
             mean_p.add_(g+h, alpha=1/len(gs))

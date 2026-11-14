@@ -14,28 +14,28 @@ from fl_coordination._impl.fedseries.engine import pair_geometry
 
 def method_label(coordinator, variant):
     if (coordinator, variant) != ('fedavg', 'baseline'):
-        raise ValueError('This entry implements only the plain FedAvg A3 baseline')
+        raise ValueError('Expected the Fashion-MNIST FedAvg baseline')
     return 'FedAvg'
 
 
 class Engine(EvaluationEngine):
-    """Share trainable encoder parameters; keep heads and BN buffers local, as in A3.
+    """Share trainable encoder parameters and keep heads and BN buffers local.
 
     n_i is the size of client i's complete fitting subset, excluding validation.
     w_next = sum_i n_i / sum_j n_j * w_i_after_local_SGD.
-    Private heads retain A3's local Adam. There is no shared/server optimizer state.
+    Private heads use persistent local Adam.
     """
     def __init__(self, config, coordinator, variant, device, network=None):
         method_label(coordinator, variant)
         if (config['case'], config['clients'], config['participants']) != ('A3', 5, 5):
-            raise ValueError('FedAvg A3 requires all five clients')
+            raise ValueError('Fashion-MNIST FedAvg requires all five clients')
         if config['optimizer'] != 'none' or config['private_optimizer'] != 'adam':
-            raise ValueError('FedAvg uses parameter averaging and A3 private-head Adam')
+            raise ValueError('FedAvg uses parameter averaging and private-head Adam')
         counts = config['client_fit_sizes']
         if len(counts) != 5 or any(not isinstance(n, int) or isinstance(n, bool) or n <= 0 for n in counts):
             raise ValueError('Positive per-client fitting sample counts are required')
         if config['weight_decay'] != 0 or not math.isfinite(config['local_learning_rate']) or config['local_learning_rate'] <= 0:
-            raise ValueError('A3 local shared SGD requires positive lr and zero weight decay')
+            raise ValueError('Local shared SGD requires a positive learning rate and zero weight decay')
         self.config, self.device, self.flat, self.variant = config, device, False, variant
         self.weights = [n / sum(counts) for n in counts]
         self.encoder, self.heads = build_network(5) if network is None else network
@@ -50,10 +50,10 @@ class Engine(EvaluationEngine):
     def step(self, client_batches):
         lengths = {len(b) for b in client_batches.values()}
         if sorted(client_batches) != list(range(5)) or len(lengths) != 1:
-            raise ValueError('A3 requires all clients and equal local block lengths')
+            raise ValueError('Fashion-MNIST requires all clients and equal local block lengths')
         k = next(iter(lengths))
         if not 1 <= k <= self.config['local_steps']:
-            raise ValueError('Local block length exceeds the A3 budget')
+            raise ValueError('Local block length exceeds the configured step limit')
         shared = list(self.encoder.parameters())
         base = [p.detach().clone() for p in shared]
         merged = [torch.zeros_like(p) for p in shared]

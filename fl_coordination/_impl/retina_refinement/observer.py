@@ -121,7 +121,7 @@ def scratch_engine(engine):
 
 @torch.no_grad()
 def calibrate_bn(scratch, data):
-    """Reset each domain independently; sample-weighted BN using fitting images only."""
+    """Recompute each client's BN statistics using its fitting images."""
     modules = [m for m in scratch.encoder.modules() if isinstance(m, torch.nn.modules.batchnorm._BatchNorm)]
     modes = {m: m.training for m in scratch.encoder.modules()}
     momenta = {m: m.momentum for m in modules}

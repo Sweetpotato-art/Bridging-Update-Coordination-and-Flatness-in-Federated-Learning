@@ -1,9 +1,4 @@
-"""Numerical recovery of the author's unchanged simplex minimum-norm QP.
-
-The author builds V @ V.T in float32 before converting it to float64. With
-millions of coordinates and a dependent fairness row this can turn a PSD Gram
-matrix indefinite. Successful author calls remain untouched; recovery recomputes
-the SAME inner products in float64, without ridge terms or eigenvalue clipping.
+"""Recover the simplex minimum-norm solution using float64 Gram products.
 """
 import numpy as np
 

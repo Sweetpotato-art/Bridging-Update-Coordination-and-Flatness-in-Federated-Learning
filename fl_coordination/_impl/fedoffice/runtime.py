@@ -1,4 +1,4 @@
-"""Full data epochs; validation-only selection; permanent 100/200/300 checkpoints."""
+"""Office-Home training, validation tracking, and configured checkpoint milestones."""
 import csv
 import json
 import shutil

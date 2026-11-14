@@ -1,4 +1,4 @@
-"""Reuse paired derivatives and author coordinators over full Retina trajectories."""
+"""Retina training with separate coordination for SAM and FedGF."""
 from fl_coordination._impl.fedcifar.engine import Engine as CoordinatorEngine
 from fl_coordination._impl.fedseries.engine import Engine as TrajectoryEngine
 from fl_coordination._impl.fedcifarglobalflat.engine import Engine as GlobalFlatEngine
@@ -26,7 +26,7 @@ class SAMEngine(Evaluation, CoordinatorEngine):
             scales = [self.config['local_learning_rate']*len(batches[c]) for c in ids]
             self.g_coordinator.bind_context(base, scales)
             self.h_coordinator.bind_context(base, scales)
-        # Full local epochs: no inherited CIFAR mini-batch truncation.
+        # Use all fitting batches in each local epoch.
         return TrajectoryEngine.step(self, batches)
 
 

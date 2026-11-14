@@ -1,4 +1,4 @@
-"""Author-based A3 aggregation adapters; no local loss or server-Adam changes."""
+"""Shared-coordinate aggregation adapters for Fashion-MNIST."""
 import contextlib
 import copy
 import io
@@ -14,11 +14,7 @@ from .mdfg_qp import solve as solve_mdfg_qp
 
 
 class FedMDFGAgg:
-    """Original fairness/normalization/QP/direction-rescaling, without line search.
-
-    This A3-only adapter receives every client each round, so no absent-client
-    history constraints arise. Expected-loss history and fairness forcing persist
-    independently in each branch, exactly as in the author direction routine.
+    """Fairness-guided direction with independent expected-objective history per branch.
     """
     def __init__(self, config, device, layout=None):
         self.device, self.n = device, config['clients']
@@ -35,7 +31,7 @@ class FedMDFGAgg:
 
     def __call__(self, vectors, losses, step, ids=None):
         if ids != list(range(self.n)):
-            raise ValueError('FedMDFG-Agg in A3 requires full ordered participation')
+            raise ValueError('FedMDFG-Agg requires all client vectors in client order')
         grads = torch.stack(vectors)
         value = torch.as_tensor(losses, dtype=grads.dtype, device=self.device)
         finite(grads, 'FedMDFG inputs'); finite(value, 'FedMDFG objective values')
@@ -50,7 +46,7 @@ class FedMDFGAgg:
             self.join_count[i] += 1
         force = 0 < increased < self.n
         norms = grads.norm(dim=1)
-        live = torch.where(norms > 1e-6)[0]  # Author threshold, not a new gradient floor.
+        live = torch.where(norms > 1e-6)[0]  # Threshold for including directions in the quadratic program.
         diagnostics = dict(solver='author_fedmdfg_qp', fairness_forced=bool(force),
                            live_clients=live.cpu().tolist(), line_search=False)
         zero = torch.zeros_like(grads[0])
@@ -80,7 +76,7 @@ class FedMDFGAgg:
         target_norm = (weights @ grads).norm()
         old = d.clone()
         d = d/dnorm*target_norm
-        # The published direction rescaling and numerical correction are retained.
+        # Check the descent constraints after restoring the direction norm.
         while bool(torch.max(-(vec @ d)) > 1e-6):
             if bool(d.norm() > dnorm*2):
                 d /= 2
@@ -102,11 +98,9 @@ class FedMDFGAgg:
 
 
 class FedAWAAgg:
-    """Pinned released implementation, including its one-step lag in applied weights.
+    """Fit branch weights to shared-parameter pseudo-endpoints w - eta*K*v.
 
-    Each round's vectors are converted into shared-parameter pseudo-endpoints
-    w - eta*K*v before calling the author optimizer. Only the resulting weighted
-    direction is passed to the common A3 server Adam. This is not a new objective.
+    The weights available at the start of the round combine the branch vectors.
     """
     def __init__(self, config, device, layout=None):
         self.device, self.n = device, config['clients']
@@ -114,8 +108,7 @@ class FedAWAAgg:
         if (self.args.server_epochs, self.args.server_optimizer, self.args.gamma, self.args.reg_distance) != (1,'adam',1.,'cos'):
             raise ValueError('FedAWA-Agg pins the released default weight-optimizer settings')
         self.native = awa_functions()
-        # The release initializes logits with data fractions (not log fractions).
-        # A3 has equal client sizes, so these are uniform initial weights.
+        # Equal fitting-set sizes give each client the same initial logit.
         self.logits = torch.full((self.n,), 1/self.n, device=device)
         self.context = None
 
@@ -180,7 +173,7 @@ class FedLDAgg:
 
     def __call__(self, vectors, losses, step, ids=None):
         if ids != list(range(self.n)):
-            raise ValueError('FedLD-Agg in A3 requires all clients')
+            raise ValueError('FedLD-Agg requires all client vectors')
         matrix = torch.stack(vectors)
         finite(matrix, 'FedLD inputs')
         if matrix.shape[1] != sum(size for _,size in self.layout):

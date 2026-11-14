@@ -1,4 +1,4 @@
-"""Reuse the verified trajectory coordinators and sampled-endpoint FedAvg engine."""
+"""Retina training with full local epochs."""
 import numpy as np
 import torch
 from torch.nn import functional as F
@@ -20,7 +20,7 @@ def binary_metrics(labels, probabilities):
     y,p=np.asarray(labels,dtype=np.int64),np.asarray(probabilities,dtype=np.float64)
     if not len(y) or p.shape!=y.shape or not np.isfinite(p).all(): raise ValueError('Invalid binary predictions')
     predicted=(p>.5).astype(np.int64)  # binary argmax chooses class 0 on an exact tie
-    # Return null rather than an invented AUC if a set contains only one class.
+    # AUROC is undefined when the evaluation split contains one class.
     pos,neg=int((y==1).sum()),int((y==0).sum())
     auc=balanced=None
     if pos and neg:

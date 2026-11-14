@@ -20,10 +20,7 @@ class ClientGradients:
 
 
 def asam_perturbations(parameters, gradients, rho, adaptive=True):
-    """Author formula: rho*w^2*g / (|| |w|*g ||_2 + 1e-12).
-
-    One joint norm covers the shared encoder AND this client's private head.
-    In particular this is not standard SAM with a large radius of two.
+    """Compute SAM or ASAM offsets with one norm over the backbone and client head.
     """
     norms = [(p.detach().abs() * g if adaptive else g).norm()
              for p, g in zip(parameters, gradients)]
@@ -36,7 +33,7 @@ def asam_perturbations(parameters, gradients, rho, adaptive=True):
 
 
 def client_gradients(encoder, head, batch, local_buffers, rho, adaptive=True):
-    """No optimizer steps here. Even heads update only after both uploads exist."""
+    """Evaluate both gradients before applying any parameter update."""
     encoder.train()
     head.train()
     restore_buffers(encoder, local_buffers)

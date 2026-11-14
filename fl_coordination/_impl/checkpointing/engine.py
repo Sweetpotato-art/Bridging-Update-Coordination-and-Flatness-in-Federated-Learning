@@ -21,10 +21,9 @@ def check_ids(config, batches):
 
 
 class FedAvgEngine(EvaluationEngine):
-    """Average sampled clients' actual SGD endpoints, weighted by fit-set size.
+    """Average participating clients' SGD endpoints by fitting-set size.
 
-    Private heads use the same persistent Adam recipe as both FedFV variants.
-    No global optimizer and no renormalization over absent clients.
+    Each client retains its private head, Adam state, and BN buffers.
     """
     def __init__(self,config,device,network):
         self.config,self.device = config,device

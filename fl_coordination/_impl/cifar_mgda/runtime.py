@@ -1,4 +1,4 @@
-"""Identical validation selection, atomic checkpoints, and resume semantics."""
+"""CIFAR-100 training and checkpointing with FedMGDA+."""
 from types import FunctionType
 from fl_coordination._impl.fedcifar import runtime as ordinary
 from fl_coordination._impl.fedcifarglobalflat import runtime as global_flat

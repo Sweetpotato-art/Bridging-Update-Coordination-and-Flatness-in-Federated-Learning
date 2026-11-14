@@ -1,4 +1,4 @@
-"""Four pinned coordinators and two flatness mechanisms with unequal local K_i."""
+"""CIFAR-100 global probes over client trajectories with unequal step counts."""
 import numpy as np
 import torch
 
@@ -15,7 +15,7 @@ from .config import COORDINATORS, MECHANISMS
 
 def method_label(coordinator, mechanism, config=None):
     if coordinator not in COORDINATORS or mechanism not in MECHANISMS:
-        raise ValueError('Not one of the eight new combinations')
+        raise ValueError('Unsupported CIFAR-100 global probe recipe')
     return FIRST_ORDER[coordinator] + '-' + NAMES[mechanism] + '-split'
 
 
@@ -25,8 +25,7 @@ def display_label(coordinator, mechanism, config=None):
 
 
 def raw_global_delta(uploads, fractions, eta):
-    # K_i differs on CIFAR. Average actual endpoint increments, not K_i-normalized
-    # gradients. Fit-set weights are fixed and do not depend on losses/accuracy.
+    # Weight each client's endpoint increment by its fitting-set size.
     reference = torch.zeros_like(uploads[0]['g'])
     for upload, weight in zip(uploads, fractions):
         reference.add_(upload['g'] + upload['h'], alpha=weight*eta*upload['steps'])
@@ -39,7 +38,7 @@ class Engine(BaseEngine):
         if config['head_mode'] != 'private' or config['adaptive_sam']:
             raise ValueError('This comparison pins private heads and standard L2 perturbations')
         if config['fedgf_threshold'] is None:
-            raise ValueError('Training-only FedGF calibration has not been installed')
+            raise ValueError('A calibrated FedGF threshold is required')
         counts = config['client_fit_sizes']
         if len(counts) != config['clients'] or any(type(n) is not int or n <= 0 for n in counts):
             raise ValueError('Complete positive client fitting counts are required')
@@ -136,8 +135,7 @@ class Engine(BaseEngine):
         for module in (self.encoder, self.heads):
             if not all(bool(torch.isfinite(p).all()) for p in module.parameters()):
                 raise FloatingPointError('Nonfinite parameters after optimizer step')
-        # Raw endpoint mean is kept separately from both coordinated directions
-        # and the Adam-preconditioned actual update. No extra coordinator state.
+        # Form the reference from local endpoints before the server update.
         reference = raw_global_delta(uploads, self.fractions, eta)
         mechanism_info = self.mechanism.finish(reference, [u['endpoint_norm'] for u in uploads])
         mechanism_info['reference_delta_norm'] = float(reference.norm())

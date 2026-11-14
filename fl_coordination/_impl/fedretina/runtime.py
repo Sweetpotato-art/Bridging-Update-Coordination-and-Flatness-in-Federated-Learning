@@ -1,4 +1,4 @@
-"""Each round covers every fitting sample once; validation selects all checkpoints."""
+"""Retina training and checkpointing with one data epoch per round."""
 import json
 import time
 from pathlib import Path
@@ -64,10 +64,7 @@ def run_method(config,data,method,device,result_dir,weight_dir,manifest,
                    config=config,budget=budget,source_manifest=manifest,split_sha256=data.digest,
                    initial_model_sha256=engine.initial_hash,weights=str(wr),
                    selection='Highest mean client validation accuracy; earliest tie',
-                   adaptation=adaptation or 'Author Retina ownership; patient holdouts and private heads; client-local BN buffers. '
-                              'FedAvg: size-weighted SGD endpoints. Coordinated methods: A(mean trajectory gradients) + server Adam. '
-                              'ASAM: direct A(mean p), no second h branch. FedAWA-Agg: released weight optimizer '
-                              'with per-client eta*K_i endpoint context, applied to shared trajectory mean gradients.'))
+                   adaptation=adaptation or 'Retina uses patient holdouts and client-local classifiers and BN buffers.'))
         data.save_manifest(rr/'split_manifest.json');write_history(rr/'metrics.jsonl',history)
         print(f'{label} | {config["rounds"]} full-data Epochs | resume {start} | samples/round {sum(data.fit_sizes)}',flush=True)
         for r in range(start+1,config['rounds']+1):

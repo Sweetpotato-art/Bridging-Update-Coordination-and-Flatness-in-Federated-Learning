@@ -1,4 +1,4 @@
-"""Reuse existing numerical kernels without changing pinned predecessor files."""
+"""Office-Home trainer bindings for evaluation with weight averaging."""
 from fl_coordination._impl.fedcifar.engine import Engine as TrajectoryEngine
 from fl_coordination._impl.fedoffice.model import build_network
 from fl_coordination._impl.fedofficecomplete.engine import GFEngine, GloSSLocalEngine

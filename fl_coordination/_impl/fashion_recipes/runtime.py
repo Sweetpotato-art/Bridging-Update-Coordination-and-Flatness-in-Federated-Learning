@@ -1,4 +1,4 @@
-"""Reuse exact historical training code, with one experiment identity per job."""
+"""Dispatch the configured Fashion-MNIST training recipe."""
 from functools import partial
 from pathlib import Path
 from types import FunctionType

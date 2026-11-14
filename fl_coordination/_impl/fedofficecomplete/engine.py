@@ -1,4 +1,4 @@
-"""Reuse checked trajectories, the MGDA QP and fresh local-SAM probes."""
+"""Office-Home coordination adapters for baseline and flatness recipes."""
 from fl_coordination._impl.fedcifar.engine import Engine as TrajectoryEngine
 from fl_coordination._impl.fedcifarglobalflat.engine import Engine as FlatEngine
 from fl_coordination._impl.fedcifarextra.operators import make_coordinator

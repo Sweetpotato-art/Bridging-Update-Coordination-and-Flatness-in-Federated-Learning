@@ -1,4 +1,4 @@
-"""Use the frozen Series A step/evaluation/resume machinery with new operators."""
+"""Fashion-MNIST trajectory training with interchangeable coordinators."""
 import torch
 
 from fl_coordination._impl.fedmini.model import build_network, buffers, flatten
@@ -19,7 +19,7 @@ def method_label(coordinator, variant):
 class Engine(SeriesEngine):
     def __init__(self, config, coordinator, variant, device, network=None):
         if variant not in VARIANTS or config['optimizer'] != 'adam':
-            raise ValueError('Invalid variant or changed A3 optimizer')
+            raise ValueError('Expected a supported Fashion-MNIST variant and the Adam optimizer')
         self.config, self.flat, self.device = config, variant != 'baseline', device
         self.variant = variant
         self.encoder, self.heads = build_network(config['clients']) if network is None else network

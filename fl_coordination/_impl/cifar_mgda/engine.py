@@ -1,4 +1,4 @@
-"""Reuse frozen CIFAR trajectories and FedGF; replace the coordinator factory."""
+"""FedMGDA+ coordination for CIFAR-100."""
 from types import FunctionType
 from fl_coordination._impl.fedcifar.engine import Engine as FrozenEngine
 from fl_coordination._impl.fedcifarglobalflat.engine import Engine as FrozenGFEngine

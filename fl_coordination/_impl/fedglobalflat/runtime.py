@@ -1,4 +1,4 @@
-"""Reuse the frozen data coverage, validation selection and atomic resume loop."""
+"""Fashion-MNIST training and checkpointing with global probes."""
 from types import FunctionType
 import numpy as np
 

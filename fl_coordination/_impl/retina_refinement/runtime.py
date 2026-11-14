@@ -1,4 +1,4 @@
-"""Three endpoints from one unchanged 100-Epoch Retina trajectory."""
+"""Evaluate final, validation-selected, and averaged Retina checkpoints."""
 import json,signal,time
 from pathlib import Path
 from fl_coordination._impl.fedmini.data import fingerprint

@@ -1,4 +1,4 @@
-"""Reuse the frozen FedFV trajectory and history; replace only probe evaluation."""
+"""FedFV trajectory training with a local probe at the globally shifted point."""
 import math
 from types import FunctionType
 from fl_coordination._impl.cifar_probe_engine.engine import Engine as OriginalEngine

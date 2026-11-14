@@ -38,7 +38,7 @@ def stability(segments):
 
 
 class StabilityDetector(LossValleyDetector):
-    """Experiment 3 replaces only entry, preserving loss-based exit and flush."""
+    """Enter the averaging interval when client validation scores stabilize."""
     def observe(self, segment):
         if self.finalized:
             raise RuntimeError('Cannot observe a finalized detector')

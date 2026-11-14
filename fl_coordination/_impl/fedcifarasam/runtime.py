@@ -1,4 +1,4 @@
-"""Keep the original 300-epoch train/validation/checkpoint loop unchanged."""
+"""CIFAR-100 training and checkpointing with direct ASAM coordination."""
 from types import FunctionType
 from fl_coordination._impl.fedcifar import runtime as frozen
 from .engine import Engine,method_label,display_label

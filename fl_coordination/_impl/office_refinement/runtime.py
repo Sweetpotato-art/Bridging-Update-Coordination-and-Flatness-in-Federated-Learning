@@ -1,4 +1,4 @@
-"""Exact full-data budget, resumable observer, validation-frozen paired outputs."""
+"""Evaluate final and averaged Office-Home checkpoints after training."""
 import json
 import signal
 import time

@@ -1,4 +1,4 @@
-"""Reuse verified FedFV/ASAM arithmetic and sample-weighted FedAvg endpoints."""
+"""Office-Home training with FedAvg, FedFV, and directly coordinated ASAM."""
 from fl_coordination._impl.fedseries.engine import Engine as TrajectoryEngine
 from fl_coordination._impl.fedcifaravg.engine import Engine as FedAvgEngine
 from .model import build_network
@@ -17,7 +17,7 @@ class FVEngine(TrajectoryEngine):
 
 def build_engine(config, method, device, network=None):
     if method not in METHODS:
-        raise ValueError('Only the three approved experiments are implemented')
+        raise ValueError('Unsupported Office-Home training recipe')
     if method=='fedavg':
         return FedAvgEngine(config,'fedavg','baseline',device,network or build_network(config))
     return FVEngine(config,method,device,network)

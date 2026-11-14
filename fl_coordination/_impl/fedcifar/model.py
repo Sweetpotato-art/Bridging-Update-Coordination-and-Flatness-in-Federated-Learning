@@ -1,4 +1,4 @@
-"""Pinned FedAWA CIFAR ResNet-20; only the last linear layer's ownership changes."""
+"""ResNet-20 backbone and classifiers for CIFAR-100."""
 import ast
 import copy
 from functools import lru_cache

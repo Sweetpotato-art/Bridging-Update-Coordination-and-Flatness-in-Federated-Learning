@@ -17,7 +17,7 @@ from .engine import Engine, method_label, display_label
 
 def run_method(config, data, coordinator, variant, device, result_root, weight_root,
                source_manifest, *, engine_factory=Engine, stop_after_epoch=None):
-    """stop_after_epoch is only for synthetic resume tests, never a CLI default."""
+    """Train CIFAR-100 with global probes and select by validation accuracy."""
     label = method_label(coordinator, variant, config)
     result_dir, weight_dir = Path(result_root) / label, Path(weight_root) / label
     result_dir.mkdir(parents=True, exist_ok=True)
@@ -30,7 +30,7 @@ def run_method(config, data, coordinator, variant, device, result_root, weight_r
     final_path, meta_path = result_dir / 'final.json', result_dir / 'metadata.json'
     with run_lock(weight_dir / '.run.lock'):
         metadata = dict(identity=identity, identity_sha256=identity_hash, label=label,
-                        protocol='CIFAR-100 common-recipe adaptation of pinned author coordinators',
+                        protocol='CIFAR-100 trajectory training with shared-coordinate probes',
                         head_mode=config['head_mode'], bn_policy=config['bn_policy'],
                         config=config, sources=source_manifest, split_sha256=data.digest,
                         weights=str(weight_dir.resolve()), epoch_budget=budget,
@@ -47,7 +47,7 @@ def run_method(config, data, coordinator, variant, device, result_root, weight_r
         if meta_path.exists():
             old = json.loads(meta_path.read_text(encoding='utf-8'))
             if old['identity_sha256'] != identity_hash:
-                raise RuntimeError('Existing method identity changed; use --revision')
+                raise RuntimeError('Run settings changed. Use new --results and --weights roots.')
             if 'initial_model_sha256' in old:
                 metadata['initial_model_sha256'] = old['initial_model_sha256']
         if final_path.exists():

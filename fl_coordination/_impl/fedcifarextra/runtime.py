@@ -1,4 +1,4 @@
-"""Unmodified CIFAR training/validation/resume loop with isolated method names."""
+"""CIFAR-100 training and checkpointing for the aggregation adapters."""
 from types import FunctionType
 from fl_coordination._impl.fedcifar import runtime as frozen
 from .engine import Engine,method_label,display_label

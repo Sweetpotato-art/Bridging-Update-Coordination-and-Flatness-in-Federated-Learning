@@ -1,4 +1,4 @@
-"""Reuse unchanged multi-step branch arithmetic and pinned author coordinators."""
+"""CIFAR-100 trajectory training and server coordination."""
 import torch
 
 from fl_coordination._impl.feda3.operators import make_coordinator
@@ -12,7 +12,7 @@ NAMES = {'fedfv': 'FedFV', 'fedmgda': 'FedMGDA+', 'fedld': 'FedLD-Agg'}
 
 
 def method_label(coordinator, variant, config=None):
-    """Stable filesystem IDs; never label standard SAM as ASAM or vice versa."""
+    """Map recipe identifiers to method labels."""
     base = NAMES[coordinator]
     if config is None or config.get('protocol') == 'CIFAR100-ResNet20-v1':
         return {'baseline': '', 'sam': 'ASAM-', 'split': 'F-'}[variant] + base

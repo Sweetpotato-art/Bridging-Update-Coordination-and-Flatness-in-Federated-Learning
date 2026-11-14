@@ -1,4 +1,4 @@
-"""CIFAR FedAWA context for unequal K_i; the pinned author objective is unchanged."""
+"""FedAWA-Agg pseudo-endpoints for unequal client step counts."""
 import contextlib
 import io
 from types import SimpleNamespace
@@ -39,8 +39,7 @@ class UnequalStepFedAWA(FedAWAAgg):
         finite(logits,'FedAWA updated logits')
         finite(merged['flat_w'],'FedAWA merged endpoint')
         self.logits = logits.detach().clone()
-        # Common-recipe aggregation consumes trajectory MEAN gradients. K_i is
-        # used in the author's endpoint objective, not silently in the server step.
+        # Use K_i in the pseudo-endpoint objective and aggregate trajectory means.
         direction = used @ matrix
         scaled = matrix * matrix.new_tensor(scales)[:,None]
         error = float((merged['flat_w']-(base-used@scaled)).norm()/base.norm().clamp_min(1e-12))

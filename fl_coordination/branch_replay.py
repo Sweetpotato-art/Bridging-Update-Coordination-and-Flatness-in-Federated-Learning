@@ -1,4 +1,4 @@
-"""Collect scalar diagnostics from paired A3 client-gradient replay."""
+"""Replay paired client gradients from the Fashion-MNIST experiment."""
 import json
 import math
 from pathlib import Path

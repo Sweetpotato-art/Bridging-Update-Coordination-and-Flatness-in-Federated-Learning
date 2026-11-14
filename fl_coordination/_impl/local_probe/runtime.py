@@ -1,4 +1,4 @@
-"""Same full epochs, held-out selection and exact resume; distinct method labels."""
+"""Training and checkpointing for the localized probe."""
 from types import FunctionType
 from fl_coordination._impl.fedcifarglobalflat import runtime as frozen
 from fl_coordination._impl.cifar_probe_engine.runtime import epoch_summary as original_summary

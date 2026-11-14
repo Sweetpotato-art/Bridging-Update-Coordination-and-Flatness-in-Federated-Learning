@@ -1,4 +1,4 @@
-"""Deterministic, disjoint, same-label-space two-client Fashion-MNIST split."""
+"""Fashion-MNIST data loading, partitioning, and batching."""
 import hashlib
 import json
 import math
@@ -88,7 +88,7 @@ class Data:
         path = Path(path)
         value = dict(self.manifest, manifest_sha256=self.digest)
         if path.exists() and json.loads(path.read_text(encoding='utf-8')) != value:
-            raise RuntimeError('Existing split manifest differs; choose a new experiment name')
+            raise RuntimeError('Data split changed. Use new --results and --weights roots.')
         if not path.exists():
             json_write(path, value)
 

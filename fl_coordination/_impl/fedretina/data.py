@@ -86,7 +86,7 @@ class Data:
     def __init__(self, root, config, *, strict_counts=True):
         self.root, self.config = Path(root).resolve(), config
         if config['local_epochs'] != 1: raise ValueError('This protocol uses one complete local epoch')
-        if config['participants'] != config['clients']: raise ValueError('Retina pilot uses all clients')
+        if config['participants'] != config['clients']: raise ValueError('Retina requires full client participation')
         if config['author_float_pixel_range'] != '0_255': raise ValueError('Author release uses 0-255 pixels')
         self.paths, self.records = [], []
         labels = {}
@@ -106,10 +106,9 @@ class Data:
         author_train = read_names(self.root/'train.csv') if (self.root/'train.csv').exists() else owned
         if not set(owned).issubset(author_train): raise ValueError('Client image is absent from author train.csv')
         unassigned = sorted(set(author_train)-set(owned))
-        # The release contains 8,999 train images, despite the paper's rounded
-        # 9,000 description. Preserve all released images and original owners.
+        # Validate the sample count in the released client partition.
         if strict_counts and (len(author_train), len(owned), len(public), len(unassigned)) != (8999, 8999, 3000, 0):
-            raise ValueError(f'Author sample counts changed: {len(owned)} / {len(public)}')
+            raise ValueError(f'Unexpected released Retina sample counts: {len(owned)} / {len(public)}')
         for phase, name, cid in [('train', n, c) for c,g in enumerate(groups) for n in g]+[('test', n, -1) for n in public]:
             path = (self.root/phase/name).resolve()
             if not path.is_relative_to(self.root): raise ValueError('Image symlink escapes data root')

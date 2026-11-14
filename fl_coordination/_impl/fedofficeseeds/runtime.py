@@ -1,7 +1,4 @@
-"""Reuse the exact fixed-epoch loop with private descriptive bindings.
-
-Function globals are copied, not the numerical implementation. Existing modules
-and their running experiments are never edited or monkey-patched.
+"""Evaluate Office-Home baselines at the final checkpoint.
 """
 from types import FunctionType
 from fl_coordination._impl.fedofficecomplete import runtime as original

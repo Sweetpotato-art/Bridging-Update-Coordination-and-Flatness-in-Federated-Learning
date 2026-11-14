@@ -1,4 +1,4 @@
-"""Frozen ResNet-20 and branch arithmetic; explicit unequal-K_i FedAWA context."""
+"""CIFAR-100 training with FedMDFG-Agg, FedAWA-Agg, and FedLD-Agg."""
 from fl_coordination._impl.fedcifar.engine import Engine as OriginalEngine
 from fl_coordination._impl.fedmini.model import flatten
 from .operators import make_coordinator
@@ -8,7 +8,7 @@ NAMES={'fedmgda':'FedMGDA+','fedmdfg':'FedMDFG-Agg','fedawa':'FedAWA-Agg'}
 
 def method_label(coordinator,variant,config=None):
     if coordinator not in NAMES or variant not in ('baseline','split'):
-        raise ValueError('Not one of the six additional experiments')
+        raise ValueError('Unsupported CIFAR-100 coordination recipe')
     return NAMES[coordinator]+('-FedSAM-split' if variant=='split' else '')
 
 

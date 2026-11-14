@@ -1,7 +1,4 @@
-"""Shared-coordinate perturbations, following the cited papers' equations.
-
-These are flatness-mechanism adaptations, not complete original FL algorithms.
-Private heads are never perturbed or included in the global direction norm.
+"""Shared-coordinate global probes for FedGF and FedGloSS.
 """
 import copy
 
@@ -39,7 +36,7 @@ class Mechanism:
 
     def begin(self, base):
         self.base = base.detach().clone()
-        # Previous mean client pseudo-gradient, before server Adam.
+        # Prior round's reference formed before coordination and server Adam.
         reference = self.previous_p
         self.epsilon = torch.zeros_like(base) if reference is None else radius_vector(reference, self.rho)
         self.c = sum(self.window) / len(self.window) if self.window else 0.
